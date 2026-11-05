@@ -1,0 +1,45 @@
+/* 기본 여백과 글꼴을 통일하고 작은 화면에서도 가로 넘침을 방지합니다. */
+* { box-sizing: border-box; }
+body { margin: 0; background: #f3f6f8; color: #182d40; font-family: "맑은 고딕", sans-serif; line-height: 1.6; }
+main { max-width: 1120px; margin: auto; padding: 44px 24px; }
+header, .section-heading, .card-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: clamp(26px, 5vw, 36px); letter-spacing: -1px; }
+h2 { font-size: 21px; }
+h3 { font-size: 19px; overflow-wrap: anywhere; }
+.eyebrow { color: #527080; font-size: 13px; margin-bottom: 6px; }
+.region-control { display: grid; gap: 6px; min-width: 180px; }
+label { font-size: 13px; font-weight: bold; }
+select, button { font: inherit; padding: 10px 16px; border: 1px solid #c9d3db; border-radius: 10px; background: white; color: #182d40; }
+button { cursor: pointer; }
+button:hover { background: #e9f0f5; }
+:focus-visible { outline: 3px solid #1764c0; outline-offset: 3px; }
+/* 평균 영역은 카드 등급과 혼동되지 않도록 중립적인 배경을 사용합니다. */
+.summary { margin-top: 28px; padding: 30px; background: #fff; border: 1px solid #dce4eb; border-radius: 20px; }
+.average { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin: 8px 0; }
+.average strong { font-size: clamp(38px, 9vw, 68px); line-height: 1.3; letter-spacing: -2px; }
+.average span, #average-note, .unit, .time { font-size: 12px; color: #526576; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 0; margin: 24px 0 34px; font-size: 13px; }
+.legend li::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); margin-right: 7px; }
+#status { margin: 16px 0; color: #526576; overflow-wrap: anywhere; }
+.stations { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr)); gap: 16px; }
+/* API 등급에 맞춰 카드 배경과 테두리 색을 함께 변경합니다. */
+.grade-1 { --accent: #2265c2; --surface: #edf5ff; }
+.grade-2 { --accent: #187447; --surface: #edf8f1; }
+.grade-3 { --accent: #a95309; --surface: #fff5e8; }
+.grade-4 { --accent: #bd303c; --surface: #fff0f1; }
+.grade-unknown { --accent: #626c77; --surface: #eef0f3; }
+.station { padding: 22px; border: 1px solid #dce4eb; border-top: 4px solid var(--accent); border-radius: 14px; background: var(--surface); }
+.badge { color: var(--accent); font-size: 12px; font-weight: bold; white-space: nowrap; }
+dl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0 8px; }
+dt { color: #526576; font-size: 13px; }
+dd { margin: 4px 0 0; font-size: 24px; font-weight: bold; overflow-wrap: anywhere; }
+.time { border-top: 1px solid #d6dfe5; padding-top: 12px; margin-top: 14px; }
+footer { margin-top: 36px; font-size: 12px; color: #526576; }
+/* 휴대폰에서는 지역 선택과 제목을 세로로 배치합니다. */
+@media (max-width: 560px) {
+  main { padding: 24px 16px; }
+  header { align-items: stretch; flex-direction: column; }
+  .summary { padding: 22px; }
+  .legend { margin-bottom: 24px; }
+}
